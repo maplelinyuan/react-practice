@@ -20,9 +20,18 @@
   },
   "homepage": "https://github.com/maplelinyuan/react-practice#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "prop-types": "^15.5.10",
+    "qenya": "^0.3.6",
+    "query-string": "^4.3.4",
+    "rctui": "^0.7.16",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "refetch": "^0.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",

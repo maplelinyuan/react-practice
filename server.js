@@ -54,3 +54,35 @@ new WebpackDevServer(webpack(config), {
         return console.log(err)
     }
 })
+
+const qenya = require('qenya')
+
+// qenya 会启动两个服务，一个是数据管理平台，可以设置数据表和api
+// 另一个是api服务，通过在数据管理平台配置的api访问
+qenya({
+    appPort: 3002,
+    apiPort: 3003,
+    render: function (res) {
+        if (res.data) {
+            return res.data
+        } else {
+            return {
+                error: res.errors[0].message
+            }
+        }
+    }
+})
+
+// api请求转发
+const proxy = new httpProxy.createProxyServer({
+    target: 'http://localhost:3003/',
+    changeOrigin: true
+})
+
+const methods = ['get', 'post', 'put', 'delete']
+methods.forEach(m =>
+    router[m]('/api/*', function (ctx) {
+        proxy.web(ctx.req, ctx.res)
+        ctx.body = ctx.res
+    })
+)

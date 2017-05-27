@@ -3,6 +3,6 @@
  */
 export default function () {
     return (
-        <div>书籍列表</div>
+        <div>分类列表</div>
     )
 }
